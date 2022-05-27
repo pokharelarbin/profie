@@ -10,7 +10,10 @@ Map<String, Color?> mycolors = {
   'textn': const Color.fromRGBO(82, 75, 107, 1),
   'white': const Color.fromRGBO(255, 255, 255, 1),
   'blue': const Color.fromRGBO(19, 1, 96, 1),
+  'bgwhite': const Color.fromRGBO(249, 249, 249, 1),
 };
+
+enum Gender { male, female }
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
@@ -47,6 +50,7 @@ class _ProfileState extends State<Profile> {
   );
   final url =
       'https://c8.alamy.com/comp/2H0RYJE/5-five-years-old-photo-for-passport-or-id-card-emotionally-grimacing-little-boy-with-blond-hair-and-bright-green-eyes-white-background-2H0RYJE.jpg';
+  Gender? _selected;
   @override
   Widget build(BuildContext context) {
     return ResponsiveWidget(
@@ -156,7 +160,8 @@ class _ProfileState extends State<Profile> {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30),
-            child: SizedBox(
+            child: Container(
+              color: mycolors['bgwhite'],
               // height: SizeConfig.screenHeight * 0.7,
               width: SizeConfig.screenWidth,
               child: Column(
@@ -188,8 +193,18 @@ class _ProfileState extends State<Profile> {
                     style: style12,
                   ),
                   _sizedBox(height: 0.015),
-                  _textForm(
-                    text: 'Mobile Number',
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(
+                        width: SizeConfig.screenWidth * 0.4,
+                        child: _textMale(),
+                      ),
+                      SizedBox(
+                        width: SizeConfig.screenWidth * 0.4,
+                        child: _textFemale(),
+                      ),
+                    ],
                   ),
                   _sizedBox(height: 0.03),
                   Text(
@@ -207,7 +222,8 @@ class _ProfileState extends State<Profile> {
                   ),
                   _sizedBox(height: 0.015),
                   _textForm(
-                    text: '',
+                    text: '619 3456 7890',
+                    isPhone: true,
                   ),
                   _sizedBox(height: 0.03),
                   Text(
@@ -241,7 +257,11 @@ class _ProfileState extends State<Profile> {
     );
   }
 
-  Widget _textForm({String? text, bool isDate = false}) {
+  Widget _textForm({
+    String? text,
+    bool isDate = false,
+    bool isPhone = false,
+  }) {
     return Material(
       color: mycolors['white'],
       borderRadius: const BorderRadius.all(
@@ -252,7 +272,6 @@ class _ProfileState extends State<Profile> {
         padding: const EdgeInsets.symmetric(horizontal: 10.0),
         child: TextField(
           decoration: InputDecoration(
-            // prefix: isRadio ? Radio(value: 1, groupValue: groupValue, onChanged: (value) => selectedValue = 1),
             floatingLabelBehavior: FloatingLabelBehavior.never,
             labelText: text,
             labelStyle: style1,
@@ -304,6 +323,56 @@ class _ProfileState extends State<Profile> {
               ),
               // const Icon(BootstrapIcons.arrow_right_short),
             ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _textMale() {
+    return Material(
+      color: mycolors['white'],
+      borderRadius: const BorderRadius.all(
+        Radius.circular(10),
+      ),
+      elevation: 10,
+      child: ListTile(
+        title: Text(
+          'Male',
+          style: style1,
+        ),
+        leading: Radio(
+          value: Gender.male,
+          groupValue: _selected,
+          onChanged: (Gender? value) => setState(
+            () {
+              _selected = value;
+            },
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _textFemale() {
+    return Material(
+      color: mycolors['white'],
+      borderRadius: const BorderRadius.all(
+        Radius.circular(10),
+      ),
+      elevation: 10,
+      child: ListTile(
+        title: Text(
+          'Female',
+          style: style1,
+        ),
+        leading: Radio(
+          value: Gender.female,
+          groupValue: _selected,
+          onChanged: (Gender? value) => setState(
+            () {
+              _selected = value;
+            },
           ),
         ),
       ),
