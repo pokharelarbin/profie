@@ -185,6 +185,7 @@ class _ProfileState extends State<Profile> {
                   _sizedBox(height: 0.015),
                   _textForm(
                     text: '06 August 1992',
+                    isDate: true,
                   ),
                   _sizedBox(height: 0.03),
                   Text(
@@ -245,7 +246,7 @@ class _ProfileState extends State<Profile> {
     );
   }
 
-  Widget _textForm({String? text, bool isRadio = false}) {
+  Widget _textForm({String? text, bool isDate = false}) {
     return Material(
       color: mycolors['white'],
       borderRadius: const BorderRadius.all(
@@ -266,6 +267,7 @@ class _ProfileState extends State<Profile> {
               borderSide: BorderSide.none, // No border
               borderRadius: BorderRadius.circular(10), // Apply corner radius
             ),
+            suffixIcon: isDate ? const Icon(Icons.calendar_month) : null,
           ),
         ),
       ),
