@@ -61,17 +61,12 @@ class _ProfileState extends State<Profile> {
           Stack(
             children: [
               Container(
-                height: SizeConfig.screenHeight * 0.3,
+                // height: SizeConfig.screenHeight * 0.3,
                 width: SizeConfig.screenWidth,
                 decoration: BoxDecoration(
-                  // color: Colors.blue,
+                  color: const Color.fromRGBO(19, 1, 96, 1),
                   border: Border.all(
                     style: BorderStyle.none,
-                    // color: Colors.blue,
-                  ),
-                  image: const DecorationImage(
-                    image: AssetImage('assets/images/Rectangle.png'),
-                    fit: BoxFit.cover,
                   ),
                   borderRadius: const BorderRadius.all(Radius.circular(30)),
                 ),
@@ -120,7 +115,7 @@ class _ProfileState extends State<Profile> {
                 ),
               ),
               Container(
-                height: SizeConfig.screenHeight * 0.3,
+                // height: SizeConfig.screenHeight * 0.3,
                 width: SizeConfig.screenWidth,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
@@ -162,7 +157,7 @@ class _ProfileState extends State<Profile> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30),
             child: SizedBox(
-              height: SizeConfig.screenHeight * 1.05,
+              // height: SizeConfig.screenHeight * 0.7,
               width: SizeConfig.screenWidth,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -212,7 +207,7 @@ class _ProfileState extends State<Profile> {
                   ),
                   _sizedBox(height: 0.015),
                   _textForm(
-                    text: 'Confirm Password',
+                    text: '',
                   ),
                   _sizedBox(height: 0.03),
                   Text(
