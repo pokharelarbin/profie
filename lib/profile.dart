@@ -104,16 +104,19 @@ class _ProfileState extends State<Profile> {
                         style: style21,
                       ),
                       _sizedBox(height: 0.01),
-                      ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          elevation: 6,
-                          primary: const Color.fromRGBO(255, 255, 255, 0.2),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 10),
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            elevation: 6,
+                            primary: const Color.fromRGBO(255, 255, 255, 0.2),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5),
+                            ),
                           ),
+                          child: Text('Change Image', style: style21),
                         ),
-                        child: Text('Change Image', style: style21),
                       ),
                     ],
                   ),
@@ -414,6 +417,7 @@ class _ProfileState extends State<Profile> {
             () {
               _selected = value;
             },
+            
           ),
         ),
       ),
