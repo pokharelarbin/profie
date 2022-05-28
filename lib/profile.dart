@@ -51,6 +51,7 @@ class _ProfileState extends State<Profile> {
   final url =
       'https://c8.alamy.com/comp/2H0RYJE/5-five-years-old-photo-for-passport-or-id-card-emotionally-grimacing-little-boy-with-blond-hair-and-bright-green-eyes-white-background-2H0RYJE.jpg';
   Gender? _selected;
+  int? _value = 1;
   @override
   Widget build(BuildContext context) {
     return ResponsiveWidget(
@@ -268,23 +269,86 @@ class _ProfileState extends State<Profile> {
         Radius.circular(10),
       ),
       elevation: 10,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10.0),
-        child: TextField(
-          decoration: InputDecoration(
-            floatingLabelBehavior: FloatingLabelBehavior.never,
-            labelText: text,
-            labelStyle: style1,
-            filled: true,
-            fillColor: mycolors['white'],
-            border: OutlineInputBorder(
-              borderSide: BorderSide.none, // No border
-              borderRadius: BorderRadius.circular(10), // Apply corner radius
+      child: isPhone
+          ? IntrinsicHeight(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 30, right: 10),
+                    child: DropdownButton(
+                      value: _value,
+                      items: [
+                        DropdownMenuItem(
+                          value: 1,
+                          child: Text(
+                            '1+',
+                            style: style1,
+                          ),
+                        ),
+                        DropdownMenuItem(
+                          value: 2,
+                          child: Text(
+                            '+977',
+                            style: style1,
+                          ),
+                        )
+                      ],
+                      onChanged: (int? value) {
+                        setState(
+                          () {
+                            _value = value;
+                          },
+                        );
+                      },
+                    ),
+                  ),
+                  const VerticalDivider(
+                    indent: 8,
+                    endIndent: 8,
+                    color: Color.fromRGBO(196, 196, 196, 1),
+                    thickness: 1,
+                  ),
+                  SizedBox(
+                    width: SizeConfig.screenWidth * 0.5,
+                    child: TextField(
+                      decoration: InputDecoration(
+                        floatingLabelBehavior: FloatingLabelBehavior.never,
+                        labelText: text,
+                        labelStyle: style1,
+                        filled: true,
+                        fillColor: mycolors['white'],
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide.none, // No border
+                          borderRadius:
+                              BorderRadius.circular(10), // Apply corner radius
+                        ),
+                        suffixIcon:
+                            isDate ? const Icon(Icons.calendar_month) : null,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            )
+          : Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              child: TextField(
+                decoration: InputDecoration(
+                  floatingLabelBehavior: FloatingLabelBehavior.never,
+                  labelText: text,
+                  labelStyle: style1,
+                  filled: true,
+                  fillColor: mycolors['white'],
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide.none, // No border
+                    borderRadius:
+                        BorderRadius.circular(10), // Apply corner radius
+                  ),
+                  suffixIcon: isDate ? const Icon(Icons.calendar_month) : null,
+                ),
+              ),
             ),
-            suffixIcon: isDate ? const Icon(Icons.calendar_month) : null,
-          ),
-        ),
-      ),
     );
   }
 // prefixIcon: Icon(
