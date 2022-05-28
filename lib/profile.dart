@@ -417,8 +417,8 @@ class _ProfileState extends State<Profile> {
             () {
               _selected = value;
             },
-            
           ),
+          activeColor: Colors.amber,
         ),
       ),
     );
@@ -444,6 +444,7 @@ class _ProfileState extends State<Profile> {
               _selected = value;
             },
           ),
+          activeColor: Colors.amber,
         ),
       ),
     );
