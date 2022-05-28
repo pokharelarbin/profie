@@ -301,6 +301,8 @@ class _ProfileState extends State<Profile> {
                           },
                         );
                       },
+                      icon: const Icon(Icons.expand_more_outlined),
+                      iconEnabledColor: const Color.fromRGBO(21, 11, 61, 1),
                     ),
                   ),
                   const VerticalDivider(
